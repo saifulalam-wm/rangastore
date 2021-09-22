@@ -228,6 +228,22 @@ const loadProducts = () => {
 
 };
 
+// Sticky Nav Bar//
+
+
+window.onscroll = function() {myFunction()};
+
+var navbar = document.getElementById("navbar");
+var sticky = navbar.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+  } else {
+    navbar.classList.remove("sticky");
+  }
+}
+
 
 
 // show all product in UI 
@@ -295,21 +311,27 @@ const updateTaxAndCharge = () => {
     setInnerText("total-tax", priceConverted * 0.4);
   }
 
+
 };
 
-console.log()
 
+// const getPrice = document.getElementById('price');
+// const getPriceValue = getPrice.innerText;
+// const getDel = document.getElementById('delivery-charge');
+// const getTax = document.getElementById('delivery-charge');
+
+// console.log(getPriceValue);
 
 
 //grandTotal update function
 const updateTotal = () => {
   const grandTotal =
-  getInputValue("total") + getInputValue("delivery-charge") +
-    getInputValue("total-tax");
+  getInputValue("price") 
+  + getInputValue("delivery-charge") 
+  + getInputValue("total-tax");
   document.getElementById("total").innerText = grandTotal;
 
-  console.log(getInputValue("price"));
 };
-loadProducts();
 
-getInputValue();
+updateTotal();
+loadProducts();
